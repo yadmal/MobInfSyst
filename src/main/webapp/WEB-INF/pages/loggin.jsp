@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="../css/loggin.css" />
+    <link rel="stylesheet" type="text/css" href="../css/loggin.css"/>
 </head>
 
 <body>

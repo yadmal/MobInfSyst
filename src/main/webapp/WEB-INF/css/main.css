@@ -71,9 +71,6 @@ td {
     list-style-type: none;
 }
 
-
-
-
 .content {
     padding: 0 25px;
 }
@@ -105,7 +102,7 @@ td {
     float: left;
     background-color: cornsilk;
     margin: 15px 15px;
-    *
+
 }
 
 .content .contractInfo .connectedOptions div {
@@ -114,7 +111,7 @@ td {
     float: left;
     background-color: cornsilk;
     margin: 15px 15px;
-    *
+
 }
 
 .content .contractInfo .availableOptions {
@@ -127,14 +124,12 @@ td {
     float: left;
     background-color: cornsilk;
     margin: 15px 15px;
-    *
-}
 
+}
 
 .subscriberForm .chooseTariff {
     margin: 10px 0px;
 }
-
 
 .footer {
     clear: both;
