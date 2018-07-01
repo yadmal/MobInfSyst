@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+h1 {
+    clear: both;
+    overflow: hidden;
+    text-align: center;
+}
+
+textarea {
+    resize: none;
+}
+
+tr,
+th,
+td {
+    padding: 5px 5px;
+    border: 1px solid black;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.header {
+    padding: 0 25px;
+    height: 80px;
+    background-color: darkgray;
+}
+
+.header .logo {
+    margin-top: 14px;
+    margin-left: 14px;
+    float: left;
+
+}
+
+.header .logo p {
+    font-weight: 900;
+    color: #de1414;
+    text-transform: uppercase;
+    margin: 5px 0px;
+}
+
+.header .userHeaderInfo {
+    margin-top: 10px;
+    float: right;
+}
+
+.menu ul {
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    clear: both;
+    overflow: hidden;
+    background: #cec8c8;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+}
+
+.menu ul li {
+    text-transform: uppercase;
+    list-style-type: none;
+}
+
+
+
+
+.content {
+    padding: 0 25px;
+}
+
+/*
+.content .contract{
+    
+    border: 1px solid black;
+    background-color: antiquewhite;
+    margin: 15px 15px;
+}
+*/
+
+.content .fromDb .findUser {
+    margin: 10px 0px;
+}
+
+.content .fromDb .loadAll {
+    margin: 10px 0px;
+}
+
+.content .contractInfo {
+    margin: 10px 0px;
+}
+
+.content .contractInfo .availableTariffs div {
+
+    width: 180px;
+    float: left;
+    background-color: cornsilk;
+    margin: 15px 15px;
+    *
+}
+
+.content .contractInfo .connectedOptions div {
+
+    width: 180px;
+    float: left;
+    background-color: cornsilk;
+    margin: 15px 15px;
+    *
+}
+
+.content .contractInfo .availableOptions {
+    clear: both;
+    overflow: hidden;
+}
+
+.content .contractInfo .availableOptions div {
+    width: 180px;
+    float: left;
+    background-color: cornsilk;
+    margin: 15px 15px;
+    *
+}
+
+
+.subscriberForm .chooseTariff {
+    margin: 10px 0px;
+}
+
+
+.footer {
+    clear: both;
+    padding: 0 25px;
+    border-top: 1px solid black;
+    height: 80px;
+    background-color: darkgray;
+}
