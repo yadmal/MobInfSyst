@@ -1,10 +1,10 @@
-package ru.tsystems.mis.spring.dao;
+package ru.tsystems.mis.spring.service;
 
 import ru.tsystems.mis.spring.model.Client;
 
 import java.util.List;
 
-public interface ClientDAO {
+public interface ClientService {
     int add(Client client);
 
     int update(Client client);

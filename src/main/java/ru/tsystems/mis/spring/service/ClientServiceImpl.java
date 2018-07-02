@@ -1,40 +1,33 @@
-package ru.tsystems.mis.spring.dao;
+package ru.tsystems.mis.spring.service;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.tsystems.mis.spring.dao.ClientDAO;
 import ru.tsystems.mis.spring.model.Client;
-
 
 import java.util.List;
 
-public class ClientDAOImpl implements ClientDAO {
+public class ClientServiceImpl implements ClientService {
 
     @Autowired
-    SessionFactory factory;
+    ClientDAO clientDAO;
 
-
-    @Override
     public int add(Client client) {
-        return 0;
+        return clientDAO.add(client);
     }
 
-    @Override
     public int update(Client client) {
-        return 0;
+        return clientDAO.update(client);
     }
 
-    @Override
     public int delete(Client client) {
-        return 0;
+        return clientDAO.delete(client);
     }
 
-    @Override
     public Client get(Long id) {
-        return null;
+        return clientDAO.get(id);
     }
 
-    @Override
     public List<Client> list() {
-        return null;
+        return clientDAO.list();
     }
 }
