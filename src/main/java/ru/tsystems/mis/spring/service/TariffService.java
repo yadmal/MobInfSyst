@@ -1,10 +1,10 @@
-package ru.tsystems.mis.spring.dao;
+package ru.tsystems.mis.spring.service;
 
 import ru.tsystems.mis.spring.model.Tariff;
 
 import java.util.List;
 
-public interface TariffDAO {
+public interface TariffService {
 
     int add(Tariff tariff);
 
