@@ -1,9 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <title>Document</title>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../css/main.css" />
 </head>
 
@@ -38,6 +41,15 @@
         <!--   /////////////////////////////////////////////////////////////////////////////////////    -->
         <div class="content">
             <h1>ADD NEW OPTION</h1>
+
+
+            <form:form id="formCreate" modelAttribute="newOption" method="post" action="submit">
+                <form:input path=""
+            </form:form>
+
+
+
+
             <form action="">
             <p>Option title:</p>
             <input type="text" name="optionTitle" placeholder="Option">
@@ -47,7 +59,30 @@
             <input type="number" name="optionConnectionCost" placeholder="Option connection cost">
             <input type="submit" name="addOption" value="Save">
             </form>
+
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Connection cost</th>
+                </tr>
+                <c:forEach items="${list}" var="item">
+                    <tr>
+                        <td><c:out value="${item.id}"/></td>
+                        <td><c:out value="${item.title}"/></td>
+                        <td><c:out value="${item.description}"/></td>
+                        <td><c:out value="${item.price}"/></td>
+                        <td><c:out value="${item.connectionCost}"/></td>
+                    </tr>
+                </c:forEach>
+
+            </table>
         </div>
+
+
+
         <!--   /////////////////////////////////////////////////////////////////////////////////////    -->
         <!--   ////////////////////////////////////FOOTER///////////////////////////////////////////    -->
         <!--   /////////////////////////////////////////////////////////////////////////////////////    -->

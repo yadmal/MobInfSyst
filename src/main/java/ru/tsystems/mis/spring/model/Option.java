@@ -4,17 +4,16 @@ package ru.tsystems.mis.spring.model;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@Table(name = "option")
+@Table(name = "options")
 public class Option {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title", nullable = false, unique = true)
+    @Column(name = "title", nullable = false/*, unique = true*/)
     private String title;
 
     @Column (name = "option_description")
@@ -149,7 +148,7 @@ public class Option {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, title, description, price, connectionCost, connectedTariffs, connectedContracts, incompatibleOptions, relatedOptions);
+        return Objects.hash(id, title, description, price, connectionCost , connectedTariffs, connectedContracts, incompatibleOptions, relatedOptions);
     }
 
     @Override

@@ -27,7 +27,7 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="admin_add_options.html">Add New Option</a></li>
+                <li><a href="admin_add_options.jsp">Add New Option</a></li>
                 <li><a href="admin_add_tariff.html">Add New Tariff</a></li>
                 <li><a href="admin_edit_options.html">Edit Option</a></li>
                 <li><a href="admin_edit_tariff.html">Edit Tariff</a></li>

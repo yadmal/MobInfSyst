@@ -1,10 +1,10 @@
-package ru.tsystems.mis.spring.dao;
+package ru.tsystems.mis.spring.service;
 
 import ru.tsystems.mis.spring.model.Option;
 
 import java.util.List;
 
-public interface OptionDAO {
+public interface OptionService {
 
     int add(Option option);
 
