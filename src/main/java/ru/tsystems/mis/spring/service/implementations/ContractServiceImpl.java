@@ -1,12 +1,13 @@
-package ru.tsystems.mis.spring.service;
+package ru.tsystems.mis.spring.service.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.tsystems.mis.spring.dao.ContractDAO;
+import ru.tsystems.mis.spring.dao.interfaces.ContractDAO;
 import ru.tsystems.mis.spring.model.Contract;
+import ru.tsystems.mis.spring.service.interfaces.ContractService;
 
 import java.util.List;
 
-public class ContractServiceImpl implements ContractService{
+public class ContractServiceImpl implements ContractService {
 
     @Autowired
     ContractDAO contractDAO;

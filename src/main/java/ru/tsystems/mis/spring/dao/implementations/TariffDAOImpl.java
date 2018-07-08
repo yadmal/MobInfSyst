@@ -1,5 +1,6 @@
-package ru.tsystems.mis.spring.dao;
+package ru.tsystems.mis.spring.dao.implementations;
 
+import ru.tsystems.mis.spring.dao.interfaces.TariffDAO;
 import ru.tsystems.mis.spring.model.Tariff;
 
 import java.util.List;

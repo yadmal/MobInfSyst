@@ -1,8 +1,9 @@
-package ru.tsystems.mis.spring.service;
+package ru.tsystems.mis.spring.service.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.tsystems.mis.spring.dao.ClientDAO;
+import ru.tsystems.mis.spring.dao.interfaces.ClientDAO;
 import ru.tsystems.mis.spring.model.Client;
+import ru.tsystems.mis.spring.service.interfaces.ClientService;
 
 import java.util.List;
 

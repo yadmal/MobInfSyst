@@ -1,4 +1,4 @@
-package ru.tsystems.mis.spring.dao;
+package ru.tsystems.mis.spring.dao.interfaces;
 
 import ru.tsystems.mis.spring.model.Option;
 

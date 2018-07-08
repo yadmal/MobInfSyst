@@ -1,4 +1,4 @@
-package ru.tsystems.mis.spring.service;
+package ru.tsystems.mis.spring.service.interfaces;
 
 import ru.tsystems.mis.spring.model.Option;
 

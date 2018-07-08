@@ -1,12 +1,13 @@
-package ru.tsystems.mis.spring.service;
+package ru.tsystems.mis.spring.service.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.tsystems.mis.spring.dao.OptionDAO;
+import ru.tsystems.mis.spring.dao.interfaces.OptionDAO;
 import ru.tsystems.mis.spring.model.Option;
+import ru.tsystems.mis.spring.service.interfaces.OptionService;
 
 import java.util.List;
 
-public class OptionServiceImpl implements OptionService{
+public class OptionServiceImpl implements OptionService {
 
     @Autowired
     OptionDAO optionDAO;

@@ -1,9 +1,10 @@
-package ru.tsystems.mis.spring.dao;
+package ru.tsystems.mis.spring.dao.implementations;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import ru.tsystems.mis.spring.dao.interfaces.OptionDAO;
 import ru.tsystems.mis.spring.model.Option;
 
 import java.io.Serializable;

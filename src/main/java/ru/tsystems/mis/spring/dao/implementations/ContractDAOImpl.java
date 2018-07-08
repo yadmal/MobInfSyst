@@ -1,5 +1,6 @@
-package ru.tsystems.mis.spring.dao;
+package ru.tsystems.mis.spring.dao.implementations;
 
+import ru.tsystems.mis.spring.dao.interfaces.ContractDAO;
 import ru.tsystems.mis.spring.model.Contract;
 
 import java.util.List;

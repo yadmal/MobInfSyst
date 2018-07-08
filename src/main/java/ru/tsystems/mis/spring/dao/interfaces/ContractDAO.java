@@ -1,10 +1,10 @@
-package ru.tsystems.mis.spring.service;
+package ru.tsystems.mis.spring.dao.interfaces;
 
 import ru.tsystems.mis.spring.model.Contract;
 
 import java.util.List;
 
-public interface ContractService {
+public interface ContractDAO {
 
     int add(Contract contract);
 

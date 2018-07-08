@@ -1,12 +1,13 @@
-package ru.tsystems.mis.spring.service;
+package ru.tsystems.mis.spring.service.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.tsystems.mis.spring.dao.TariffDAO;
+import ru.tsystems.mis.spring.dao.interfaces.TariffDAO;
 import ru.tsystems.mis.spring.model.Tariff;
+import ru.tsystems.mis.spring.service.interfaces.TariffService;
 
 import java.util.List;
 
-public class TariffServiceImpl implements TariffService{
+public class TariffServiceImpl implements TariffService {
 
     @Autowired
     TariffDAO tariffDAO;
