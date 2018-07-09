@@ -5,13 +5,13 @@ import ru.tsystems.mis.spring.model.Client;
 import java.util.List;
 
 public interface ClientService {
-    int add(Client client);
+    void addClient(Client client);
 
-    int update(Client client);
+    void updateClient(Client client);
 
-    int delete(Client client);
+    void deleteClient(Long id);
 
-    Client get(Long id);
+    Client getClientById(Long id);
 
-    List<Client> list();
+    List<Client> listClients();
 }

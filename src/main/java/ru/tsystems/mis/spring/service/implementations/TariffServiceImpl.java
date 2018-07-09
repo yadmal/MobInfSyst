@@ -1,34 +1,47 @@
 package ru.tsystems.mis.spring.service.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tsystems.mis.spring.dao.interfaces.TariffDAO;
 import ru.tsystems.mis.spring.model.Tariff;
 import ru.tsystems.mis.spring.service.interfaces.TariffService;
 
 import java.util.List;
 
+@Service
 public class TariffServiceImpl implements TariffService {
 
     @Autowired
     TariffDAO tariffDAO;
 
-    public int add(Tariff tariff) {
-        return tariffDAO.add(tariff);
+    @Override
+    @Transactional
+    public void addTariff(Tariff tariff) {
+        tariffDAO.addTariff(tariff);
     }
 
-    public int update(Tariff tariff) {
-        return tariffDAO.update(tariff);
+    @Override
+    @Transactional
+    public void updateTariff(Tariff tariff) {
+        tariffDAO.updateTariff(tariff);
     }
 
-    public int delete(Tariff tariff) {
-        return tariffDAO.delete(tariff);
+    @Override
+    @Transactional
+    public void deleteTariff(Long id) {
+        tariffDAO.deleteTariff(id);
     }
 
-    public Tariff get(Long id) {
-        return tariffDAO.get(id);
+    @Override
+    @Transactional
+    public Tariff getTariffById(Long id) {
+        return tariffDAO.getTariffById(id);
     }
 
-    public List<Tariff> list() {
-        return tariffDAO.list();
+    @Override
+    @Transactional
+    public List<Tariff> listTariffs() {
+        return tariffDAO.listTariffs();
     }
 }

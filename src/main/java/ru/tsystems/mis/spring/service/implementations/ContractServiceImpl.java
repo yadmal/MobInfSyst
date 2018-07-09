@@ -1,34 +1,47 @@
 package ru.tsystems.mis.spring.service.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tsystems.mis.spring.dao.interfaces.ContractDAO;
 import ru.tsystems.mis.spring.model.Contract;
 import ru.tsystems.mis.spring.service.interfaces.ContractService;
 
 import java.util.List;
 
+@Service
 public class ContractServiceImpl implements ContractService {
 
     @Autowired
     ContractDAO contractDAO;
 
-    public int add(Contract contract) {
-        return contractDAO.add(contract);
+    @Override
+    @Transactional
+    public void addContract(Contract contract) {
+        contractDAO.addContract(contract);
     }
 
-    public int update(Contract contract) {
-        return contractDAO.update(contract);
+    @Override
+    @Transactional
+    public void updateContract(Contract contract) {
+        contractDAO.updateContract(contract);
     }
 
-    public int delete(Contract contract) {
-        return contractDAO.delete(contract);
+    @Override
+    @Transactional
+    public void deleteContract(Long id) {
+        contractDAO.deleteContract(id);
     }
 
-    public Contract get(Long id) {
-        return contractDAO.get(id);
+    @Override
+    @Transactional
+    public Contract getContractById(Long id) {
+        return contractDAO.getContractById(id);
     }
 
-    public List<Contract> list() {
-        return contractDAO.list();
+    @Override
+    @Transactional
+    public List<Contract> listContracts() {
+        return contractDAO.listContracts();
     }
 }

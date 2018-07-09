@@ -1,34 +1,47 @@
 package ru.tsystems.mis.spring.service.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tsystems.mis.spring.dao.interfaces.ClientDAO;
 import ru.tsystems.mis.spring.model.Client;
 import ru.tsystems.mis.spring.service.interfaces.ClientService;
 
 import java.util.List;
 
+@Service
 public class ClientServiceImpl implements ClientService {
 
     @Autowired
     ClientDAO clientDAO;
 
-    public int add(Client client) {
-        return clientDAO.add(client);
+    @Override
+    @Transactional
+    public void addClient(Client client) {
+        clientDAO.addClient(client);
     }
 
-    public int update(Client client) {
-        return clientDAO.update(client);
+    @Override
+    @Transactional
+    public void updateClient(Client client) {
+        clientDAO.updateClient(client);
     }
 
-    public int delete(Client client) {
-        return clientDAO.delete(client);
+    @Override
+    @Transactional
+    public void deleteClient(Long id) {
+        clientDAO.deleteClient(id);
     }
 
-    public Client get(Long id) {
-        return clientDAO.get(id);
+    @Override
+    @Transactional
+    public Client getClientById(Long id) {
+        return clientDAO.getClientById(id);
     }
 
-    public List<Client> list() {
-        return clientDAO.list();
+    @Override
+    @Transactional
+    public List<Client> listClients() {
+        return clientDAO.listClients();
     }
 }
