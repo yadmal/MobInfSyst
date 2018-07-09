@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface OptionDAO {
 
-    int add(Option option);
+    void addOption(Option option);
 
-    int update(Option option);
+    void updateOption(Option option);
 
-    int delete(Option option);
+    void deleteOption(Long id);
 
-    Option get(Long id);
+    Option getOptionById(Long id);
 
-    List<Option> list();
+    List<Option> listOptions();
 }

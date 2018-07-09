@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface TariffDAO {
 
-    int add(Tariff tariff);
+    void addTariff(Tariff tariff);
 
-    int update(Tariff tariff);
+    void updateTariff(Tariff tariff);
 
-    int delete(Tariff tariff);
+    void deleteTariff(Long id);
 
-    Tariff get(Long id);
+    Tariff getTariffById(Long id);
 
-    List<Tariff> list();
+    List<Tariff> listTariffs();
 }

@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface ContractDAO {
 
-    int add(Contract contract);
+    void addContract(Contract contract);
 
-    int update(Contract contract);
+    void updateContract(Contract contract);
 
-    int delete(Contract contract);
+    void deleteContract(Long id);
 
-    Contract get(Long id);
+    Contract getContractById(Long id);
 
-    List<Contract> list();
+    List<Contract> listContracts();
 }

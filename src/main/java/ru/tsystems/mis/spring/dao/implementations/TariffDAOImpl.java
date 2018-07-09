@@ -1,34 +1,76 @@
 package ru.tsystems.mis.spring.dao.implementations;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tsystems.mis.spring.dao.interfaces.TariffDAO;
 import ru.tsystems.mis.spring.model.Tariff;
 
+import java.io.Serializable;
 import java.util.List;
 
+@Repository
 public class TariffDAOImpl implements TariffDAO {
 
+    private static final Logger logger = LoggerFactory.getLogger(TariffDAOImpl.class);
+
+    @Autowired
+    SessionFactory factory;
+
+    @Transactional
     @Override
-    public int add(Tariff tariff) {
-        return 0;
+    public void addTariff(Tariff tariff) {
+        Session session = factory.openSession();
+        session.save(tariff);
+        logger.info("Tariff successfully saved. Tariff details: " + tariff);
+        session.close();
     }
 
+    @Transactional
     @Override
-    public int update(Tariff tariff) {
-        return 0;
+    public void updateTariff(Tariff tariff) {
+        Session session = factory.openSession();
+        session.update(tariff);
+        logger.info("Tariff successfully update. Tariff details: " + tariff);
+        session.close();
     }
 
+    @Transactional
     @Override
-    public int delete(Tariff tariff) {
-        return 0;
+    public void deleteTariff(Long id) {
+        Session session = factory.openSession();
+        Tariff tariff = (Tariff) session.load(Tariff.class, new Long(id));
+        if (tariff != null) {
+            session.delete(tariff);
+            logger.info("Tariff successfully delete. Tariff details: " + tariff);
+        }
+        session.close();
     }
 
+    @Transactional
     @Override
-    public Tariff get(Long id) {
-        return null;
+    public Tariff getTariffById(Long id) {
+        Session session = factory.openSession();
+        Tariff tariff = (Tariff) session.load(Tariff.class, new Long(id));
+        logger.info("Tariff successfully loaded. Tariff details: " + tariff);
+        session.close();
+        return tariff;
     }
 
+    @Transactional
     @Override
-    public List<Tariff> list() {
-        return null;
+    @SuppressWarnings("unchecked")
+    public List<Tariff> listTariffs() {
+        Session session = factory.openSession();
+        List<Tariff> list = session.createQuery("from Tariff").list();
+        for (Tariff tariff : list) {
+            logger.info("Tariff list: " + tariff);
+        }
+        session.close();
+        return list;
     }
 }
