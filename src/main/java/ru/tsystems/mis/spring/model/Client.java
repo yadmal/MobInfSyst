@@ -1,17 +1,15 @@
 package ru.tsystems.mis.spring.model;
 
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "clients")
 public class Client {
-
-    public enum User{
-        CLIENT, MANAGER, ADMINISTRATOR;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +18,8 @@ public class Client {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "surename", nullable = false)
-    private String surename;
+    @Column(name = "surname", nullable = false)
+    private String surname;
 
     @Column(name = "bithday", nullable = false)
     private Date birthday;
@@ -41,51 +39,17 @@ public class Client {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Transient
+    transient private String confirmPassword;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     @OneToMany (mappedBy = "client")
     private List<Contract> contractList;
 
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "user_type")
-    private User userType;
-
     public Client() {
-    }
-
-    public Client(String name, String surename, Date birthday, String passportNumber, String passportDescription, String address, String email, String password, List<Contract> contractList, User userType) {
-        this.name = name;
-        this.surename = surename;
-        this.birthday = birthday;
-        this.passportNumber = passportNumber;
-        this.passportDescription = passportDescription;
-        this.address = address;
-        this.email = email;
-        this.password = password;
-        this.contractList = contractList;
-        this.userType = userType;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
-        return Objects.equals(id, client.id) &&
-                Objects.equals(name, client.name) &&
-                Objects.equals(surename, client.surename) &&
-                Objects.equals(birthday, client.birthday) &&
-                Objects.equals(passportNumber, client.passportNumber) &&
-                Objects.equals(passportDescription, client.passportDescription) &&
-                Objects.equals(address, client.address) &&
-                Objects.equals(email, client.email) &&
-                Objects.equals(password, client.password) &&
-                Objects.equals(contractList, client.contractList) &&
-                userType == client.userType;
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, name, surename, birthday, passportNumber, passportDescription, address, email, password, contractList, userType);
     }
 
     public Long getId() {
@@ -104,12 +68,12 @@ public class Client {
         this.name = name;
     }
 
-    public String getSurename() {
-        return surename;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurename(String surename) {
-        this.surename = surename;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public Date getBirthday() {
@@ -160,6 +124,22 @@ public class Client {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public Role getRoles() {
+        return role;
+    }
+
+    public void setRoles(Role role) {
+        this.role = role;
+    }
+
     public List<Contract> getContractList() {
         return contractList;
     }
@@ -168,12 +148,29 @@ public class Client {
         this.contractList = contractList;
     }
 
-    public User getUserType() {
-        return userType;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(id, client.id) &&
+                Objects.equals(name, client.name) &&
+                Objects.equals(surname, client.surname) &&
+                Objects.equals(birthday, client.birthday) &&
+                Objects.equals(passportNumber, client.passportNumber) &&
+                Objects.equals(passportDescription, client.passportDescription) &&
+                Objects.equals(address, client.address) &&
+                Objects.equals(email, client.email) &&
+                Objects.equals(password, client.password) &&
+                Objects.equals(confirmPassword, client.confirmPassword) &&
+                Objects.equals(role, client.role) &&
+                Objects.equals(contractList, client.contractList);
     }
 
-    public void setUserType(User userType) {
-        this.userType = userType;
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name, surname, birthday, passportNumber, passportDescription, address, email, password, confirmPassword, role, contractList);
     }
 
     @Override
@@ -181,15 +178,16 @@ public class Client {
         return "Client{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", surename='" + surename + '\'' +
+                ", surname='" + surname + '\'' +
                 ", birthday=" + birthday +
-                ", passport number='" + passportNumber + '\'' +
-                ", passport description='" + passportDescription + '\'' +
+                ", passportNumber='" + passportNumber + '\'' +
+                ", passportDescription='" + passportDescription + '\'' +
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", number of contracts=" + contractList.size() +
-                ", user type=" + userType.name() +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", roles=" + role +
+                ", contractList=" + contractList +
                 '}';
     }
 }

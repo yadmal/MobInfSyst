@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "contract")
+@Table(name = "contracts")
 public class Contract {
 
     @Id
@@ -127,7 +127,7 @@ public class Contract {
     public String toString() {
         return "Contract{" +
                 "id=" + id +
-                ", client=" + client.getName()+ " " + client.getSurename()+ " " +
+                ", client=" + client.getName()+ " " + client.getSurname()+ " " +
                 ", phone number='" + phoneNumber + '\'' +
                 ", tariff=" + tariff.getTitle() +
                 ", connected options=" + optionList.size() +
