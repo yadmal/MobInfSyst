@@ -117,8 +117,8 @@ public class Tariff {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", number of contract=" + contractList.size() +
-                ", number of available options=" + availableOptions.size() +
+//                ", contractList=" + contractList +
+//                ", availableOptions=" + availableOptions +
                 '}';
     }
 }

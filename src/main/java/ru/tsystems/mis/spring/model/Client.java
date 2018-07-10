@@ -187,7 +187,7 @@ public class Client {
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
                 ", roles=" + role +
-                ", contractList=" + contractList +
+//                ", contractList=" + contractList +
                 '}';
     }
 }

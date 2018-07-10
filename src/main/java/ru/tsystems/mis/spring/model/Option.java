@@ -159,11 +159,11 @@ public class Option {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", connection cost=" + connectionCost +
-                ", number of tariffs=" + connectedTariffs.size() +
-                ", number of:" +
-                ", connected contracts=" + connectedContracts.size() +
-                ", incompatible options=" + incompatibleOptions.size() +
-                ", related options=" + relatedOptions.size() +
+//                ", number of tariffs=" + connectedTariffs.size() +
+//                ", number of:" +
+//                ", connected contracts=" + connectedContracts.size() +
+//                ", incompatible options=" + incompatibleOptions.size() +
+//                ", related options=" + relatedOptions.size() +
                 '}';
     }
 }
