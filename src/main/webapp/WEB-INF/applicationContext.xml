@@ -37,7 +37,23 @@
         </property>
     </bean>
 
+
+
+    <tx:annotation-driven transaction-manager="transactioManager"/>
     <bean id="transactioManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <!--<bean id="optionDAO" class="ru.tsystems.mis.spring.dao.implementations.OptionDAOImpl"/>-->
+    <!--<bean id="optionService" class="ru.tsystems.mis.spring.service.implementations.OptionServiceImpl"/>-->
+    <!--<bean id="tariffDAO" class="ru.tsystems.mis.spring.dao.implementations.TariffDAOImpl"/>-->
+    <!--<bean id="tariffService" class="ru.tsystems.mis.spring.service.implementations.TariffServiceImpl"/>-->
+    <!--<bean id="contractDAO" class="ru.tsystems.mis.spring.dao.implementations.ContractDAOImpl"/>-->
+    <!--<bean id="contractService" class="ru.tsystems.mis.spring.service.implementations.ContractServiceImpl"/>-->
+    <!--<bean id="userDAO" class="ru.tsystems.mis.spring.dao.implementations.ClientDAOImpl"/>-->
+    <!--<bean id="userService" class="ru.tsystems.mis.spring.service.implementations.ClientServiceImpl"/>-->
+
+
+    <mvc:default-servlet-handler/>
+    <mvc:annotation-driven/>
 </beans>

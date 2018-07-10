@@ -43,10 +43,13 @@ public class TariffDAOImpl implements TariffDAO {
     @Override
     public void deleteTariff(Long id) {
         Session session = factory.openSession();
-        Tariff tariff = (Tariff) session.load(Tariff.class, new Long(id));
+        Tariff tariff =(Tariff) session.get(Tariff.class, id);
         if (tariff != null) {
             session.delete(tariff);
+            session.flush();
             logger.info("Tariff successfully delete. Tariff details: " + tariff);
+        } else {
+            logger.info("Couldn't delete tariff " + tariff);
         }
         session.close();
     }
@@ -55,7 +58,8 @@ public class TariffDAOImpl implements TariffDAO {
     @Override
     public Tariff getTariffById(Long id) {
         Session session = factory.openSession();
-        Tariff tariff = (Tariff) session.load(Tariff.class, new Long(id));
+        Tariff tariff = (Tariff) session.get(Tariff.class, new Long(id));
+        session.flush();
         logger.info("Tariff successfully loaded. Tariff details: " + tariff);
         session.close();
         return tariff;
