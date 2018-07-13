@@ -41,16 +41,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-dark text-center text-uppercase">add new option</h1>
+                <h1 class="text-dark text-center text-uppercase">update tariff</h1>
             </div>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-6 py-1">
-                <form:form id="formNewOption" modelAttribute="newOption" method="post" action="saveNewOption">
+                <form:form id="formUpdateTariff" modelAttribute="updateTariff" method="post" action="saveUpdatedTariff">
                     <div class="form-row">
                         <div class="form-group col-md-6">
+                            <form:hidden path="id"/>
+                            <%--<form:hidden path="AvailableOptions"/>--%>
                             <label for="inputTitle">Title</label>
                             <form:input path="title" type="text" class="form-control" id="inputTitle"
                                         placeholder="Title"></form:input>
@@ -63,9 +65,34 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputConnectionCost">Connection cost</label>
-                            <form:input path="connectionCost" type="number" class="form-control"
-                                        id="inputConnectionCost" placeholder="Connection cost"></form:input>
+
+                            <%--<label for="showAvailableOptions">Available Options</label>--%>
+                            <form:checkboxes items="${updateTariff.availableOptions}" path="availableOptions" itemLabel="optionsList" class="form-control"
+                                        id="showAvailableOptions"></form:checkboxes>
+
+                            <%--<form:hidden path="availableOptions"/>--%>
+                            <%--<label for="showAvailableOptions">Available Options</label>--%>
+                            <%--<form:input path="availableOptions" type="text" class="form-control"--%>
+                                        <%--id="showAvailableOptions" placeholder="Connection cost"></form:input>--%>
+                            <%--<c:if test="${!empty updateTariff.availableOptions}">--%>
+                                <%--<c:forEach items="${updateTariff.availableOptions}" var="option" varStatus="count">--%>
+                                    <%--<tr>--%>
+                                        <%--<td scope="row">${count.count}</td>--%>
+                                        <%--<td>${option.title}</td>--%>
+                                        <%--<td>${option.price}</td>--%>
+                                        <%--<td>${option.connectionCost}</td>--%>
+                                        <%--&lt;%&ndash;<td>${option.description}</td>&ndash;%&gt;--%>
+                                        <%--<td>--%>
+                                            <%--<a class="btn btn-block text-uppercase btn-success"--%>
+                                               <%--href="<c:url value="/admin/updateOption/${option.id}"/>">edit</a>--%>
+                                        <%--</td>--%>
+                                        <%--<td>--%>
+                                            <%--<a class="btn btn-block text-uppercase btn-danger"--%>
+                                               <%--href="<c:url value="/admin/deleteOption/${option.id}"/>">delete</a>--%>
+                                        <%--</td>--%>
+                                    <%--</tr>--%>
+                                <%--</c:forEach>--%>
+                            <%--</c:if>--%>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPrice">Price</label>

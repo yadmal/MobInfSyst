@@ -1,226 +1,160 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Starter Template for Bootstrap 4.1.1</title>
-  <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap-theme.min.css">
-  <style>
-    body {
-      padding-top: 50px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Starter Template for Bootstrap 4.1.1</title>
+    <link rel="shortcut icon" href="">
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">--%>
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap-theme.min.css">--%>
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-grid.min.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-reboot.min.css"/> ">
+    <style>
+        body {
+            padding-top: 50px;
+        }
 
-    .starter-template {
-      padding: 40px 15px;
-      text-align: center;
-    }
-  </style>
-  <!--[if IE]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        .starter-template {
+            padding: 40px 15px;
+            text-align: center;
+        }
+    </style>
+    <!--[if IE]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 
 <body class="bg-dark border-secondary">
-  <div class="">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-3 text-center text-uppercase align-self-center">
-          <h1 class="text-light bg-secondary">YADMAL
-            <br>SYSTEMS</h1>
-        </div>
-        <div class="col-md-3"></div>
-        <div class="col-md-3"></div>
-        <div class="col-md-3 border-secondary text-center">
-          <form class="text-center text-light border" action="">
-            <div class="form-group row">
-              <label for="staticName" class="col-form-label col-sm-6 col-4 text-center">Name:</label>
-              <div class="col-sm-6 col-4">
-                <input type="text" readonly="" class="form-control-plaintext text-light text-center" id="staticName" value="Ivan"> </div>
-            </div>
-            <div class="form-group row">
-              <label for="staticSurename" class="col-form-label col-sm-6 col-4 text-center">SureName:</label>
-              <div class="col-sm-6 col-4">
-                <input type="text" readonly="" class="form-control-plaintext text-light text-center" id="staticSurename" value="Ivanov"> </div>
-            </div>
-            <button type="submit" class="btn btn-sm btn-block btn-warning">Exit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 py-2">
-          <ul class="nav nav-pills justify-content-around bg-dark text-light py-4">
-            <li class="nav-item text-uppercase text-light">
-              <a class="nav-link text-light" href="managerAddNewClient.html">add new client
-                <br> </a>
-            </li>
-            <li class="nav-item text-uppercase text-light">
-              <a class="nav-link text-light" href="managerAllContracts.html">work with active client
-                <br> </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="bg-secondary text-white">
+
+<jsp:include page="managerHeaderInclude.jsp"></jsp:include>
+
+<div class="bg-secondary text-white">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center text-uppercase text-dark">control of user options</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center text-uppercase text-dark">control of user options</h1>
+            </div>
         </div>
-      </div>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="list-unstyled">
-            <li>Current number: 0123456789</li>
-            <li>Current tariff: tariff 1</li>
-            <li>Name:</li>
-            <li>Shurename:</li>
-          </ul>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-unstyled">
+                    <li>Current number: 0123456789</li>
+                    <li>Current tariff: tariff 1</li>
+                    <li>Name:</li>
+                    <li>Shurename:</li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="lead">Connected options:</p>
-          <div class="row">
-            <div class="p-3 align-self-center col-md-4">
-              <div class="card">
-                <div class="card-block p-5 text-dark">
-                  <h1>
-                    <sup>$</sup> 25 </h1>
-                  <h3>Standard</h3>
-                  <hr>
-                  <p>Perfect for small business and growing teams.&nbsp;</p>
-                  <a href="#" class="btn btn-danger">Off</a>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead">Connected options:</p>
+                <div class="row">
+                    <div class="p-3 align-self-center col-md-4">
+                        <div class="card">
+                            <div class="card-block p-5 text-dark">
+                                <h1>
+                                    <sup>$</sup> 25 </h1>
+                                <h3>Standard</h3>
+                                <hr>
+                                <p>Perfect for small business and growing teams.&nbsp;</p>
+                                <a href="#" class="btn btn-danger">Off</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 align-self-center col-md-4">
+                        <div class="card">
+                            <div class="card-block p-5 text-dark">
+                                <h1>
+                                    <sup>$</sup> 25 </h1>
+                                <h3>Standard</h3>
+                                <hr>
+                                <p>Perfect for small business and growing teams.&nbsp;</p>
+                                <a href="#" class="btn btn-danger">Off</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 align-self-center col-md-4">
+                        <div class="card">
+                            <div class="card-block p-5 text-dark">
+                                <h1>
+                                    <sup>$</sup> 25 </h1>
+                                <h3>Standard</h3>
+                                <hr>
+                                <p>Perfect for small business and growing teams.&nbsp;</p>
+                                <a href="#" class="btn btn-danger">Off</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="p-3 align-self-center col-md-4">
-              <div class="card">
-                <div class="card-block p-5 text-dark">
-                  <h1>
-                    <sup>$</sup> 25 </h1>
-                  <h3>Standard</h3>
-                  <hr>
-                  <p>Perfect for small business and growing teams.&nbsp;</p>
-                  <a href="#" class="btn btn-danger">Off</a>
-                </div>
-              </div>
-            </div>
-            <div class="p-3 align-self-center col-md-4">
-              <div class="card">
-                <div class="card-block p-5 text-dark">
-                  <h1>
-                    <sup>$</sup> 25 </h1>
-                  <h3>Standard</h3>
-                  <hr>
-                  <p>Perfect for small business and growing teams.&nbsp;</p>
-                  <a href="#" class="btn btn-danger">Off</a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <p class="lead">Available options:</p>
-          <div class="row">
-            <div class="p-3 align-self-center col-md-4">
-              <div class="card">
-                <div class="card-block p-5 text-dark">
-                  <h1>
-                    <sup>$</sup> 25 </h1>
-                  <h3>Standard</h3>
-                  <hr>
-                  <p>Perfect for small business and growing teams.&nbsp;</p>
-                  <a href="#" class="btn btn-success">On</a>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead">Available options:</p>
+                <div class="row">
+                    <div class="p-3 align-self-center col-md-4">
+                        <div class="card">
+                            <div class="card-block p-5 text-dark">
+                                <h1>
+                                    <sup>$</sup> 25 </h1>
+                                <h3>Standard</h3>
+                                <hr>
+                                <p>Perfect for small business and growing teams.&nbsp;</p>
+                                <a href="#" class="btn btn-success">On</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 align-self-center col-md-4">
+                        <div class="card">
+                            <div class="card-block p-5 text-dark">
+                                <h1>
+                                    <sup>$</sup> 25 </h1>
+                                <h3>Standard</h3>
+                                <hr>
+                                <p>Perfect for small business and growing teams.&nbsp;</p>
+                                <a href="#" class="btn btn-success">On</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 align-self-center col-md-4">
+                        <div class="card">
+                            <div class="card-block p-5 text-dark">
+                                <h1>
+                                    <sup>$</sup> 25 </h1>
+                                <h3>Standard</h3>
+                                <hr>
+                                <p>Perfect for small business and growing teams.&nbsp;</p>
+                                <a href="#" class="btn btn-success">On</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="p-3 align-self-center col-md-4">
-              <div class="card">
-                <div class="card-block p-5 text-dark">
-                  <h1>
-                    <sup>$</sup> 25 </h1>
-                  <h3>Standard</h3>
-                  <hr>
-                  <p>Perfect for small business and growing teams.&nbsp;</p>
-                  <a href="#" class="btn btn-success">On</a>
-                </div>
-              </div>
-            </div>
-            <div class="p-3 align-self-center col-md-4">
-              <div class="card">
-                <div class="card-block p-5 text-dark">
-                  <h1>
-                    <sup>$</sup> 25 </h1>
-                  <h3>Standard</h3>
-                  <hr>
-                  <p>Perfect for small business and growing teams.&nbsp;</p>
-                  <a href="#" class="btn btn-success">On</a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="bg-dark text-white p-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 text-center align-self-center">
-          <p class="mb-5">
-            <strong>Pingendo Inc.</strong>
-            <br>795 Folsom Ave, Suite 600
-            <br>San Francisco, CA 94107
-            <br>
-            <abbr title="Phone">P:</abbr> (123) 456-7890 </p>
-          <div class="my-3 row">
-            <div class="col-4">
-              <a href="https://www.facebook.com" target="_blank">
-                <i class="fa fa-3x fa-facebook"></i>
-              </a>
-            </div>
-            <div class="col-4">
-              <a href="https://twitter.com" target="_blank">
-                <i class="fa fa-3x fa-twitter"></i>
-              </a>
-            </div>
-            <div class="col-4">
-              <a href="https://www.instagram.com" target="_blank">
-                <i class="fa fa-3x fa-instagram"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 p-0"></div>
-      </div>
-    </div>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
-    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
-  </pingendo>
+</div>
+
+<jsp:include page="managerFooterInclude.jsp"></jsp:include>
+
 </body>
+
+<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--%>
+<%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>--%>
+
+<script src="<c:url value="/resources/js/jquery-3.3.1.min.map"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 
 </html>

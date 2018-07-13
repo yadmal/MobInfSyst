@@ -41,16 +41,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-dark text-center text-uppercase">add new option</h1>
+                <h1 class="text-dark text-center text-uppercase">update option</h1>
             </div>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-6 py-1">
-                <form:form id="formNewOption" modelAttribute="newOption" method="post" action="saveNewOption">
+                <form:form id="formUpdateOption" modelAttribute="updateOption" method="post" action="saveUpdatedOption">
                     <div class="form-row">
                         <div class="form-group col-md-6">
+                            <form:hidden path="id"/>
                             <label for="inputTitle">Title</label>
                             <form:input path="title" type="text" class="form-control" id="inputTitle"
                                         placeholder="Title"></form:input>
