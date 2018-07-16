@@ -9,4 +9,9 @@ public class ManagerController {
 
     @RequestMapping("/allContracts")
     public void allContracts(){}
+
+    @RequestMapping(value = "/index")
+    public String index() {
+        return "manager/managerIndex";
+    }
 }

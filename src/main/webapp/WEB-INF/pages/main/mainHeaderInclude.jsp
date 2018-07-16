@@ -1,10 +1,12 @@
 <div class="">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 text-center text-uppercase align-self-center">
-                <h1 class="text-light bg-secondary">YADMAL
-                    <br>SYSTEMS</h1>
-            </div>
+            <a class="col-md-3 text-center text-uppercase align-self-center" style="display:block; text-decoration: none;" href="<c:url value="/admin/index"/>">
+                <div>
+                    <h1 class="text-light bg-secondary">YADMAL
+                        <br>SYSTEMS</h1>
+                </div>
+            </a>
             <div class="col-md-3"></div>
             <div class="col-md-3"></div>
             <div class="col-md-3">

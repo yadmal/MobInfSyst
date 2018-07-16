@@ -101,11 +101,11 @@ public class MainController {
             }
             if(role.equals("ROLE_MANAGER")){
                 logger.warn("IDENTIFIED: ROLE OF ACCOUNT = " + role );
-                return "manager/managerAllContracts";
+                return "manager/managerIndex";
             }
             if(role.equals("ROLE_USER")){
                 logger.warn("IDENTIFIED: ROLE OF ACCOUNT = " + role );
-                return "client/clientContracts";
+                return "client/clientIndex";
             }
         }
 

@@ -10,4 +10,9 @@ public class ClientController {
     @RequestMapping("/myContracts")
     public void clientContracts(){}
 
+    @RequestMapping(value = "/index")
+    public String index() {
+        return "client/clientIndex";
+    }
+
 }
