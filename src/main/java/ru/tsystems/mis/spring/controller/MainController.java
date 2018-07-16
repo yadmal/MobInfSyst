@@ -111,4 +111,9 @@ public class MainController {
 
         throw new RuntimeException("ROLE WASN'T FOUND");
     }
+
+    @RequestMapping(value = "/index")
+    public String index() {
+        return "main/login";
+    }
 }

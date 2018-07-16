@@ -2,7 +2,7 @@
 <div class="">
     <div class="container-fluid">
         <div class="row">
-            <a class="col-md-3 text-center text-uppercase align-self-center" style="display:block; text-decoration: none;" href="<c:url value="/admin/index"/>">
+            <a class="col-md-3 text-center text-uppercase align-self-center" style="display:block; text-decoration: none;" href="<c:url value="/client/index"/>">
                 <div>
                     <h1 class="text-light bg-secondary">YADMAL
                         <br>SYSTEMS</h1>
