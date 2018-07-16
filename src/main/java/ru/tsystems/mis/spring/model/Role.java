@@ -3,8 +3,14 @@ package ru.tsystems.mis.spring.model;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
+
+/**
+ * Simple JavaBean object that represents role of {@link Client}
+ *
+ * @author Dmitry Yashkin
+ * @version 1.0
+ */
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -15,7 +21,7 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "role")
+    @ManyToMany(mappedBy = "roles")
     private List<Client> clients;
 
     public Role() {

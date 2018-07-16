@@ -5,7 +5,13 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+
+/**
+ * Simple JavaBean object that represents a Client
+ *
+ * @author Dmitry Yashkin
+ * @version 1.0
+ */
 
 @Entity
 @Table(name = "clients")
@@ -21,7 +27,7 @@ public class Client {
     @Column(name = "surname", nullable = false)
     private String surname;
 
-    @Column(name = "bithday", nullable = false)
+    @Column(name = "birthday", nullable = false)
     private Date birthday;
 
     @Column(name = "passport_number", unique = true, nullable = false)
@@ -33,8 +39,8 @@ public class Client {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "email", unique = true, nullable = false)
-    private String email;
+    @Column(name = "username", unique = true, nullable = false)
+    private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -42,11 +48,13 @@ public class Client {
     @Transient
     transient private String confirmPassword;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "client_roles",
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
 
-    @OneToMany (mappedBy = "client")
+    @OneToMany(mappedBy = "client")
     private List<Contract> contractList;
 
     public Client() {
@@ -108,12 +116,12 @@ public class Client {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -132,12 +140,12 @@ public class Client {
         this.confirmPassword = confirmPassword;
     }
 
-    public Role getRoles() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRoles(Role role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public List<Contract> getContractList() {
@@ -160,17 +168,17 @@ public class Client {
                 Objects.equals(passportNumber, client.passportNumber) &&
                 Objects.equals(passportDescription, client.passportDescription) &&
                 Objects.equals(address, client.address) &&
-                Objects.equals(email, client.email) &&
+                Objects.equals(username, client.username) &&
                 Objects.equals(password, client.password) &&
                 Objects.equals(confirmPassword, client.confirmPassword) &&
-                Objects.equals(role, client.role) &&
+                Objects.equals(roles, client.roles) &&
                 Objects.equals(contractList, client.contractList);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, surname, birthday, passportNumber, passportDescription, address, email, password, confirmPassword, role, contractList);
+        return Objects.hash(id, name, surname, birthday, passportNumber, passportDescription, address, username, password, confirmPassword, roles, contractList);
     }
 
     @Override
@@ -183,11 +191,10 @@ public class Client {
                 ", passportNumber='" + passportNumber + '\'' +
                 ", passportDescription='" + passportDescription + '\'' +
                 ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
-                ", roles=" + role +
-//                ", contractList=" + contractList +
                 '}';
     }
 }
+

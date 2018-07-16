@@ -8,53 +8,53 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
-import ru.tsystems.mis.spring.dao.interfaces.OptionDAO;
-import ru.tsystems.mis.spring.model.Option;
+import ru.tsystems.mis.spring.dao.interfaces.RoleDAO;
+import ru.tsystems.mis.spring.model.Client;
+import ru.tsystems.mis.spring.model.Role;
 
-import java.io.Serializable;
 import java.util.List;
 
 @EnableTransactionManagement
 @Repository
-public class OptionDAOImpl implements OptionDAO {
+public class RoleDaoImpl implements RoleDAO {
 
-    private static final Logger logger = LoggerFactory.getLogger(OptionDAOImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(RoleDaoImpl.class);
 
     @Autowired
     SessionFactory factory;
 
     @Transactional
     @Override
-    public void addOption(Option option) {
+    public void addRole(Role role) {
         Session session = factory.openSession();
-        session.save(option);
+        session.save(role);
         session.flush();
-        logger.info("Option successfully saved. Option details: " + option);
+        logger.info("Role successfully saved. Role details: " + role);
         session.close();
     }
 
     @Transactional
     @Override
-    public void updateOption(Option option) {
+    public void updateRole(Role role) {
         Session session = factory.openSession();
-        session.update(option);
+        session.update(role);
         session.flush();
-        logger.info("Option successfully update. Option details: " + option);
+        logger.info("Role successfully update. Role details: " + role);
         session.close();
     }
 
 
     @Transactional
     @Override
-    public void deleteOption(Long id) {
+    public void deleteRole(Long id) {
         Session session = factory.openSession();
-        Option option = (Option) session.get(Option.class, new Long(id));
-        if(option != null){
-            session.delete(option);
+        Role role = (Role) session.get(Role.class, new Long(id));
+        if(role != null){
+            session.delete(role);
             session.flush();
-            logger.info("Option successfully delete. Option details: " + option);
+            logger.info("Role successfully delete. Role details: " + role);
         } else {
-            logger.info("Couldn't delete option " + option);
+            logger.info("Couldn't delete role " + role);
         }
         session.close();
 
@@ -62,24 +62,24 @@ public class OptionDAOImpl implements OptionDAO {
 
     @Transactional
     @Override
-    public Option getOptionById(Long id) {
+    public Role getRoleById(Long id) {
         Session session = factory.openSession();
-        Option option = (Option) session.get(Option.class, id);
+        Role role = (Role) session.get(Role.class, id);
 //        session.flush();
-        logger.info("Option successfully loaded. Option details: " + option);
+        logger.info("Role successfully loaded. Role details: " + role);
         session.close();
-        return option;
+        return role;
     }
 
     @Transactional
     @Override
     @SuppressWarnings("unchecked")
-    public List<Option> listOptions() {
+    public List<Role> listRoles() {
         Session session = factory.openSession();
-        List<Option> list = session.createQuery("from Option").list();
+        List<Role> list = session.createQuery("from Role").list();
         session.flush();
-        for (Option option : list) {
-            logger.info("Option list: " + option);
+        for (Role role : list) {
+            logger.info("Role list: " + role);
         }
         session.close();
         return list;

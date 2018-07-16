@@ -26,7 +26,7 @@ public class Tariff {
     @OneToMany(mappedBy = "tariff")
     private List<Contract> contractList;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tariff_option",
             joinColumns = @JoinColumn(name = "tariff_id"),
             inverseJoinColumns = @JoinColumn(name = "option_id"))

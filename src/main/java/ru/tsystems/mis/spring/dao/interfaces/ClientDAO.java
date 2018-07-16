@@ -14,5 +14,7 @@ public interface ClientDAO {
 
     Client getClientById(Long id);
 
+    Client getClientByUsername(String username);
+
     List<Client> listClients();
 }

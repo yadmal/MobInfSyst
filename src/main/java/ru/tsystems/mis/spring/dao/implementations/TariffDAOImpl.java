@@ -6,12 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tsystems.mis.spring.dao.interfaces.TariffDAO;
 import ru.tsystems.mis.spring.model.Tariff;
 
 import java.io.Serializable;
 import java.util.List;
+
+@EnableTransactionManagement
 
 @Repository
 public class TariffDAOImpl implements TariffDAO {
@@ -26,6 +29,7 @@ public class TariffDAOImpl implements TariffDAO {
     public void addTariff(Tariff tariff) {
         Session session = factory.openSession();
         session.save(tariff);
+        session.flush();
         logger.info("Tariff successfully saved. Tariff details: " + tariff);
         session.close();
     }
@@ -35,6 +39,7 @@ public class TariffDAOImpl implements TariffDAO {
     public void updateTariff(Tariff tariff) {
         Session session = factory.openSession();
         session.update(tariff);
+        session.flush();
         logger.info("Tariff successfully update. Tariff details: " + tariff);
         session.close();
     }
@@ -58,7 +63,7 @@ public class TariffDAOImpl implements TariffDAO {
     @Override
     public Tariff getTariffById(Long id) {
         Session session = factory.openSession();
-        Tariff tariff = (Tariff) session.get(Tariff.class, new Long(id));
+        Tariff tariff = (Tariff) session.get(Tariff.class, id);
         session.flush();
         logger.info("Tariff successfully loaded. Tariff details: " + tariff);
         session.close();
@@ -71,6 +76,7 @@ public class TariffDAOImpl implements TariffDAO {
     public List<Tariff> listTariffs() {
         Session session = factory.openSession();
         List<Tariff> list = session.createQuery("from Tariff").list();
+        session.flush();
         for (Tariff tariff : list) {
             logger.info("Tariff list: " + tariff);
         }

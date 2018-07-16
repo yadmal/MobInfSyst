@@ -33,29 +33,20 @@
     <![endif]-->
 </head>
 
-<body class="bg-dark border-light">
+<body class="bg-dark border-secondary">
 
-<jsp:include page="mainHeaderInclude.jsp"></jsp:include>
+<jsp:include page="administratorHeaderInclude.jsp"></jsp:include>
 
-<div class="py-5 bg-secondary">
-    <div class="container">
-        <div class="row text-light">
-            <div class="col-md-7 align-self-center">
-                <h3>Align center text with image</h3>
-                <p class="my-3">Flex setting of this column. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</p>
-            </div>
-            <div class="col-md-5">
-                <img class="img-fluid d-block" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg"></div>
+<div class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="">
+                <img class="img-fluid d-block" src="/resources/images/hannah-wei-84051-unsplash.jpg"></div>
         </div>
     </div>
 </div>
 
-<jsp:include page="mainFooterInclude.jsp"></jsp:include>
+<jsp:include page="administratorFooterInclude.jsp"></jsp:include>
 
 </body>
 
