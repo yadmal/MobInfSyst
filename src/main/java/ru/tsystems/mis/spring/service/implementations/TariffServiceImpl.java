@@ -41,7 +41,19 @@ public class TariffServiceImpl implements TariffService {
 
     @Override
     @Transactional
+    public Tariff getTariffByTitle(String title) {
+        return tariffDAO.getTariffByTitle(title);
+    }
+
+    @Override
+    @Transactional
     public List<Tariff> listTariffs() {
         return tariffDAO.listTariffs();
+    }
+
+    @Transactional
+    @Override
+    public boolean hasTariff(String title) {
+        return tariffDAO.hasTariff(title);
     }
 }

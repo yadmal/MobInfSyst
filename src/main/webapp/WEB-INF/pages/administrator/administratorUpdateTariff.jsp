@@ -27,10 +27,31 @@
             text-align: center;
         }
     </style>
-    <!--[if IE]>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+    <script type="text/javascript">
+        function checkTitle(){
+            $.ajax({
+                url: '/admin/checkTitle',
+                method: 'get',
+                dataType: 'text',
+                data: ({title: $('#inputTitle').val()}),
+                success: function(data){
+                    console.log(data);
+                    $("#titleStatus").empty();
+                    if(data == "true"){
+                        console.log(data);
+                        $("#titleStatus").append("Title is free");
+                    } else{
+                        $("#titleStatus").append("Title is already exists");
+                    }
+                }
+            });
+        }
+
+    </script>
 </head>
 
 <body class="bg-dark border-secondary">
@@ -53,9 +74,10 @@
                         <div class="form-group col-md-6">
                             <form:hidden path="id"/>
                             <%--<form:hidden path="AvailableOptions"/>--%>
-                            <label for="inputTitle">Title</label>
+                            <p id="titleStatus" style="color: red"></p>
+                            <label for="inputTitle" >Title</label>
                             <form:input path="title" type="text" class="form-control" id="inputTitle"
-                                        placeholder="Title"></form:input>
+                                        placeholder="Title" onkeyup="checkTitle()"></form:input>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputDescription">Description</label>
@@ -66,33 +88,50 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
 
-                            <%--<label for="showAvailableOptions">Available Options</label>--%>
-                            <form:checkboxes items="${updateTariff.availableOptions}" path="availableOptions" itemLabel="optionsList" class="form-control"
-                                        id="showAvailableOptions"></form:checkboxes>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-light table-hover text-center m-2">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Connection cost</th>
+                                            <th scope="col">Description</th>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:if test="${!empty updateTariff.availableOptions}">
+                                            <c:forEach items="${updateTariff.availableOptions}" var="option" varStatus="count">
+                                                <tr>
+                                                    <td scope="row">${count.count}</td>
+                                                    <td>${option.title}</td>
+                                                    <td>${option.price}</td>
+                                                    <td>${option.connectionCost}</td>
+                                                    <td>${option.description}</td>
+                                                    <td>
+                                                        <a class="btn btn-block text-uppercase btn-success"
+                                                           href="<c:url value="/admin/updateOption/${option.id}"/>">edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-block text-uppercase btn-danger"
+                                                           href="<c:url value="/admin/deleteOption/${option.id}"/>">delete</a>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </c:if>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            <%--<form:hidden path="availableOptions"/>--%>
-                            <%--<label for="showAvailableOptions">Available Options</label>--%>
-                            <%--<form:input path="availableOptions" type="text" class="form-control"--%>
-                                        <%--id="showAvailableOptions" placeholder="Connection cost"></form:input>--%>
-                            <%--<c:if test="${!empty updateTariff.availableOptions}">--%>
-                                <%--<c:forEach items="${updateTariff.availableOptions}" var="option" varStatus="count">--%>
-                                    <%--<tr>--%>
-                                        <%--<td scope="row">${count.count}</td>--%>
-                                        <%--<td>${option.title}</td>--%>
-                                        <%--<td>${option.price}</td>--%>
-                                        <%--<td>${option.connectionCost}</td>--%>
-                                        <%--&lt;%&ndash;<td>${option.description}</td>&ndash;%&gt;--%>
-                                        <%--<td>--%>
-                                            <%--<a class="btn btn-block text-uppercase btn-success"--%>
-                                               <%--href="<c:url value="/admin/updateOption/${option.id}"/>">edit</a>--%>
-                                        <%--</td>--%>
-                                        <%--<td>--%>
-                                            <%--<a class="btn btn-block text-uppercase btn-danger"--%>
-                                               <%--href="<c:url value="/admin/deleteOption/${option.id}"/>">delete</a>--%>
-                                        <%--</td>--%>
-                                    <%--</tr>--%>
-                                <%--</c:forEach>--%>
-                            <%--</c:if>--%>
+                            <%--<form:checkboxes items="${updateTariff.availableOptions}" path="availableOptions" itemLabel="optionsList" class="form-control"--%>
+                                        <%--id="showAvailableOptions"></form:checkboxes>--%>
+
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPrice">Price</label>
@@ -112,10 +151,10 @@
 
 </body>
 
-<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--%>
-<%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>--%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
-<script src="<c:url value="/resources/js/jquery-3.3.1.min.map"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+<%--<script rel="script" type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.min.map"/>"></script>--%>
+<%--<script rel="script" type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>--%>
 
 </html>

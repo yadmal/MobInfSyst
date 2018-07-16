@@ -14,5 +14,9 @@ public interface TariffService {
 
     Tariff getTariffById(Long id);
 
+    Tariff getTariffByTitle(String title);
+
     List<Tariff> listTariffs();
+
+    boolean hasTariff(String title);
 }

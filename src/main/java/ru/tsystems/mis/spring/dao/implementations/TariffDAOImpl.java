@@ -1,5 +1,6 @@
 package ru.tsystems.mis.spring.dao.implementations;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tsystems.mis.spring.dao.interfaces.TariffDAO;
+import ru.tsystems.mis.spring.model.Client;
 import ru.tsystems.mis.spring.model.Tariff;
 
 import java.io.Serializable;
@@ -72,6 +74,18 @@ public class TariffDAOImpl implements TariffDAO {
 
     @Transactional
     @Override
+    public Tariff getTariffByTitle(String title) {
+        Session session = factory.openSession();
+        Query query = session.createQuery("FROM Tariff t WHERE t.title=:title").setParameter("title", title);
+        Tariff tariff = (Tariff) query.uniqueResult();
+//        session.flush();
+        logger.info("Tariff successfully loaded by title. Tariff details: " + tariff);
+        session.close();
+        return tariff;
+    }
+
+    @Transactional
+    @Override
     @SuppressWarnings("unchecked")
     public List<Tariff> listTariffs() {
         Session session = factory.openSession();
@@ -82,5 +96,15 @@ public class TariffDAOImpl implements TariffDAO {
         }
         session.close();
         return list;
+    }
+
+    @Transactional
+    @Override
+    public boolean hasTariff(String title) {
+        Session session = factory.openSession();
+
+        Query query = session.createQuery("FROM Tariff t WHERE t.title = :title").setString("title", title);
+        boolean res = query.uniqueResult() != null;
+        return res;
     }
 }

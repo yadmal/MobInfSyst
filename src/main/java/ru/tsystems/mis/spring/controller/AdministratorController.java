@@ -2,6 +2,8 @@ package ru.tsystems.mis.spring.controller;
 
 import com.mysql.fabric.Server;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
@@ -126,5 +128,13 @@ public class AdministratorController extends PropertyEditorSupport {
         return "administrator/administratorIndex";
     }
 
-
+    @RequestMapping(value = "/checkTitle", method = RequestMethod.GET, produces = "text/html")
+    public @ResponseBody
+    String checkTitle(@RequestParam String title){
+        if(!tariffService.hasTariff(title)){
+            return "true";
+        } else {
+            return "false";
+        }
+    }
 }
