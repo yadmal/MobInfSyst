@@ -129,8 +129,8 @@ public class Contract {
                 "id=" + id +
                 ", client=" + client.getName()+ " " + client.getSurname()+ " " +
                 ", phone number='" + phoneNumber + '\'' +
-                ", tariff=" + tariff.getTitle() +
-                ", connected options=" + optionList.size() +
+//                ", tariff=" + tariff.getTitle() +
+//                ", connected options=" + optionList.size() +
                 ", blocked by client=" + blockedByClient +
                 ", blocked by operator=" + blockedByOperator +
                 '}';

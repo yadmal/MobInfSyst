@@ -65,7 +65,8 @@ public class TariffDAOImpl implements TariffDAO {
     @Override
     public Tariff getTariffById(Long id) {
         Session session = factory.openSession();
-        Tariff tariff = (Tariff) session.get(Tariff.class, id);
+        Query query = session.createQuery("FROM Tariff t WHERE t.id=:id").setParameter("id", id);
+        Tariff tariff = (Tariff) query.uniqueResult();
         session.flush();
         logger.info("Tariff successfully loaded. Tariff details: " + tariff);
         session.close();
@@ -78,7 +79,7 @@ public class TariffDAOImpl implements TariffDAO {
         Session session = factory.openSession();
         Query query = session.createQuery("FROM Tariff t WHERE t.title=:title").setParameter("title", title);
         Tariff tariff = (Tariff) query.uniqueResult();
-//        session.flush();
+        session.flush();
         logger.info("Tariff successfully loaded by title. Tariff details: " + tariff);
         session.close();
         return tariff;

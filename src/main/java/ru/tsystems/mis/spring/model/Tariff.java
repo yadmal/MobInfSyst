@@ -115,7 +115,7 @@ public class Tariff {
         return "Tariff{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
+//                ", description='" + description + '\'' +
                 ", price=" + price +
 //                ", contractList=" + contractList +
 //                ", availableOptions=" + availableOptions +

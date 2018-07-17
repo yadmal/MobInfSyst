@@ -128,7 +128,7 @@ public class AdministratorController extends PropertyEditorSupport {
         return "administrator/administratorIndex";
     }
 
-    @RequestMapping(value = "/checkTitle", method = RequestMethod.GET, produces = "text/html")
+    @RequestMapping(value = "/checkTitle", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     String checkTitle(@RequestParam String title){
         if(!tariffService.hasTariff(title)){
@@ -136,5 +136,12 @@ public class AdministratorController extends PropertyEditorSupport {
         } else {
             return "false";
         }
+    }
+
+    @RequestMapping(value = "/getTariffById", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    Tariff getTariffById(@RequestParam("id") Long id){
+        Tariff tariff = tariffService.getTariffById(id);
+        return tariff;
     }
 }

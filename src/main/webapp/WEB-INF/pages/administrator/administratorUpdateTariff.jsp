@@ -32,6 +32,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 
     <script type="text/javascript">
+
+        <%--function loadTitle() {--%>
+            <%--$.ajax({--%>
+                <%--url: '/admin/getTariffById',--%>
+                <%--method: 'get',--%>
+                <%--dataType: 'json',--%>
+                <%--contentType : "application/json",--%>
+                <%--data: ({id: "${updateTariff.id}"}),--%>
+                <%--success: function(data){--%>
+                    <%--console.log(data);--%>
+                    <%--// $("#inputTitle1").text(data.title);--%>
+                <%--}--%>
+            <%--});--%>
+        <%--};--%>
+
+        <%--window.onload = function loadConnectedOptions() {--%>
+            <%--$.ajax({--%>
+                <%--url: '/admin/getConnectedOptions',--%>
+                <%--method: 'get',--%>
+                <%--dataType: 'json',--%>
+                <%--contentType : "application/json",--%>
+                <%--data: ({id: "${updateTariff.id}"}),--%>
+                <%--success: function(data){--%>
+                    <%--console.log(data);--%>
+                    <%--// $("#inputTitle1").text(data.title);--%>
+                <%--}--%>
+            <%--});--%>
+        <%--}--%>
+
         function checkTitle(){
             $.ajax({
                 url: '/admin/checkTitle',
@@ -44,17 +73,18 @@
                     if(data == "true"){
                         console.log(data);
                         $("#titleStatus").append("Title is free");
+                        $("#buttonSubmit").prop("disabled", false);
                     } else{
                         $("#titleStatus").append("Title is already exists");
+                        $("#buttonSubmit").prop("disabled", true);
                     }
                 }
             });
-        }
-
+        };
     </script>
 </head>
 
-<body class="bg-dark border-secondary">
+<body class="bg-dark border-secondary" onload="loadTitle()">
 
 <jsp:include page="administratorHeaderInclude.jsp"></jsp:include>
 
@@ -74,6 +104,7 @@
                         <div class="form-group col-md-6">
                             <form:hidden path="id"/>
                             <%--<form:hidden path="AvailableOptions"/>--%>
+                            <input type="text" id="inputTitle1"></input>
                             <p id="titleStatus" style="color: red"></p>
                             <label for="inputTitle" >Title</label>
                             <form:input path="title" type="text" class="form-control" id="inputTitle"
@@ -102,7 +133,8 @@
                                             <td></td>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="availableOptionsTable">
+
                                         <c:if test="${!empty updateTariff.availableOptions}">
                                             <c:forEach items="${updateTariff.availableOptions}" var="option" varStatus="count">
                                                 <tr>
@@ -139,8 +171,8 @@
                                         placeholder="Price"></form:input>
                         </div>
                     </div>
-                    <form:button value="submit"
-                                 class="btn text-center text-uppercase btn-block btn-success">save</form:button>
+                    <form:button id="buttonSubmit" value="submit"
+                                 class="btn text-center text-uppercase btn-block btn-success" disabled="true">save</form:button>
                 </form:form>
             </div>
         </div>
